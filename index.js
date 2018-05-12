@@ -12,11 +12,11 @@ const server = require('http').Server(app);
 
 // MongoDB connection configuration
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL, { useMongoClient: true }, (err, res) => {
-    if (err)
-        console.log(`err connecting to db on ${process.env.DB_URL}, err: ${err}`);
-    else
-        console.log(`----- Database connected on ${process.env.DB_URL} -----`);
+mongoose.connect(process.env.DB_URL, {useMongoClient: true}, (err, res) => {
+  if (err)
+    console.log(`err connecting to db on ${process.env.DB_URL}, err: ${err}`);
+  else
+    console.log(`----- Database connected on ${process.env.DB_URL} -----`);
 }); // connect to our database
 
 // Set port
@@ -30,36 +30,36 @@ app.use(morgan('dev'));
 
 // Validate each call before route
 app.use('/', function (err, req, res, next) {
-    next();
+  next();
 });
 
 // Set directory for express
 // app.use(express.static(path.join(__dirname, 'public')));
 
 let filter = function (req) {
-    if (['/login'].indexOf(req.path) >= 0) {
-        return true;
-    } else if (req.path.startsWith('/isUserAlreadyExist')) {
-        return true;
-    }
+  if (['/login'].indexOf(req.path) >= 0) {
+    return true;
+  } else if (req.path.startsWith('/isUserAlreadyExist')) {
+    return true;
+  }
 };
 
 app.use(expressJwt({secret: process.env.APP_SECRET}).unless(filter));
 
 app.use('/', function (err, req, res, next) {
-    if (err.name === 'UnauthorizedError') {
-        res.status(401).send({
-            'message': 'Please login again. Session expired.'
-        });
-        return;
-    } else if (req.originalUrl !== '/login') {
-        var authorization = req.header('authorization');
-        if (authorization) {
-            var session = JSON.parse(new Buffer((authorization.split(' ')[1]).split('.')[1], 'base64').toString());
-            res.locals.session = session;
-        }
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send({
+      'message': 'Please login again. Session expired.'
+    });
+    return;
+  } else if (req.originalUrl !== '/login') {
+    var authorization = req.header('authorization');
+    if (authorization) {
+      var session = JSON.parse(new Buffer((authorization.split(' ')[1]).split('.')[1], 'base64').toString());
+      res.locals.session = session;
     }
-    next();
+  }
+  next();
 });
 
 // Load body parser
@@ -75,5 +75,5 @@ app.use(require('./controllers/index'));
 
 //Start listening server
 server.listen(process.env.PORT, () => {
-    console.log(`-----------------------\nServer started successfully!, Open this URL ${process.env.BASE_URL}\n-----------------------`);
+  console.log(`-----------------------\nServer started successfully!, Open this URL ${process.env.BASE_URL}\n-----------------------`);
 });

@@ -7,13 +7,13 @@ const user = require('../models/user');
  * @return {err} - return error
  */
 let checkLogin = (username, password) => {
-    return user
-        .findOne({username, password})
-        .exec()
-        .then((user) => {
-            return Promise.resolve(user);
-        })
-        .catch((err) => Promise.reject(err));
+  return user
+    .findOne({username, password})
+    .exec()
+    .then((user) => {
+      return Promise.resolve(user);
+    })
+    .catch((err) => Promise.reject(err));
 };
 
 /**
@@ -22,12 +22,12 @@ let checkLogin = (username, password) => {
  * @return {err} - return error
  */
 let getAllUsers = () => {
-    return user
-        .find({})
-        .sort({name: 1})
-        .exec()
-        .then((users) => Promise.resolve(users))
-        .catch((err) => Promise.reject(err));
+  return user
+    .find({})
+    .sort({name: 1})
+    .exec()
+    .then((users) => Promise.resolve(users))
+    .catch((err) => Promise.reject(err));
 };
 
 /**
@@ -37,11 +37,11 @@ let getAllUsers = () => {
  * @return {err} - return error
  */
 let getUserById = (id) => {
-    return user
-        .findById(id)
-        .exec()
-        .then((user) => Promise.resolve(user))
-        .catch((err) => Promise.reject(err));
+  return user
+    .findById(id)
+    .exec()
+    .then((user) => Promise.resolve(user))
+    .catch((err) => Promise.reject(err));
 };
 
 /**
@@ -51,13 +51,13 @@ let getUserById = (id) => {
  * @return {err} - return error
  */
 let getUserByName = (name) => {
-    return user
-        .findOne({
-            name: new RegExp('^' + name + '$', "i")
-        })
-        .exec()
-        .then((user) => Promise.resolve(user))
-        .catch((err) => Promise.reject(err));
+  return user
+    .findOne({
+      name: new RegExp('^' + name + '$', "i")
+    })
+    .exec()
+    .then((user) => Promise.resolve(user))
+    .catch((err) => Promise.reject(err));
 };
 
 /**
@@ -67,13 +67,13 @@ let getUserByName = (name) => {
  * @return {err} - return error
  */
 let addUser = (req) => {
-    let oUser = new user();
-    oUser.name = req.name;
-    oUser.description = req.description;
+  let oUser = new user();
+  oUser.name = req.name;
+  oUser.description = req.description;
 
-    return oUser.save()
-        .then(user => Promise.resolve(user))
-        .catch(err => Promise.reject(err));
+  return oUser.save()
+    .then(user => Promise.resolve(user))
+    .catch(err => Promise.reject(err));
 };
 
 /**
@@ -83,17 +83,17 @@ let addUser = (req) => {
  * @return {err} - return error
  */
 let updateUser = (req, id) => {
-    return user
-        .findById(id)
-        .exec()
-        .then((oUser) => {
-            oUser.name = req.name || oUser.name;
-            oUser.description = req.description || oUser.description;
-            return oUser.save()
-                .then(updatedUser => Promise.resolve(updatedUser))
-                .catch(err => Promise.reject(err));
-        })
+  return user
+    .findById(id)
+    .exec()
+    .then((oUser) => {
+      oUser.name = req.name || oUser.name;
+      oUser.description = req.description || oUser.description;
+      return oUser.save()
+        .then(updatedUser => Promise.resolve(updatedUser))
         .catch(err => Promise.reject(err));
+    })
+    .catch(err => Promise.reject(err));
 };
 
 /**
@@ -103,24 +103,24 @@ let updateUser = (req, id) => {
  * @return {err} - return error
  */
 let removeUser = (id) => {
-    return user
-        .findById(id)
-        .exec()
-        .then((oUser) => {
-            return oUser
-                .remove()
-                .then((rUser) => Promise.resolve(rUser))
-                .catch(err => Promise.reject(err));
-        })
+  return user
+    .findById(id)
+    .exec()
+    .then((oUser) => {
+      return oUser
+        .remove()
+        .then((rUser) => Promise.resolve(rUser))
         .catch(err => Promise.reject(err));
+    })
+    .catch(err => Promise.reject(err));
 };
 
 module.exports = {
-    getAllUsers,
-    getUserById,
-    getUserByName,
-    addUser,
-    updateUser,
-    removeUser,
-    checkLogin
+  getAllUsers,
+  getUserById,
+  getUserByName,
+  addUser,
+  updateUser,
+  removeUser,
+  checkLogin
 };
