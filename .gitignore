@@ -54,9 +54,8 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-
 ## Directory-based project format:
 .idea/
 .tmp/
+
+package-lock.json
