@@ -22,7 +22,7 @@
     "url": "https://github.com/kdhttps/node-basic/issues"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "author": "KD",
   "license": "MIT",

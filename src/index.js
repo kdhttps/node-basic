@@ -71,7 +71,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 // Register routes. Loaded main route. Index route loads other routes.
-app.use(require('./src/index.route'));
+app.use(require('./index.route'));
 
 //Start listening server
 server.listen(process.env.PORT, () => {
