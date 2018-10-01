@@ -3,6 +3,24 @@
   "version": "1.0.0",
   "description": "Node API with mongoDB",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdhttps/node-basic.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "mongodb",
+    "expressjs",
+    "jwt",
+    "authentication",
+    "boilerplate",
+    "basic",
+    "simple-learn"
+  ],
+  "bugs": {
+    "url": "https://github.com/kdhttps/node-basic/issues"
+  },
   "scripts": {
     "start": "node index.js"
   },
@@ -26,5 +44,9 @@
     "path": "^0.12.7",
     "randomstring": "^1.1.5",
     "util": "^0.10.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
   }
 }

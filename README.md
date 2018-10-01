@@ -26,7 +26,7 @@ For installing mongodb [here](https://docs.mongodb.com/manual/installation/).
  2. To start the project hit:  
 
     ```
-    node index.js
+    node index.route.js
     ```
     or
     ```
@@ -42,7 +42,7 @@ For installing mongodb [here](https://docs.mongodb.com/manual/installation/).
 
 2. Disable JWT authentication
    
-    By commenting following line you can disabled JWT verification in index.js.
+    By commenting following line you can disabled JWT verification in index.route.js.
 
     ```
     // app.use(expressJwt({secret: process.env.APP_SECRET}).unless(filter));

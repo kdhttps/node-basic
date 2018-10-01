@@ -49,7 +49,7 @@ app.use(expressJwt({secret: process.env.APP_SECRET}).unless(filter));
 app.use('/', function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401).send({
-      'message': 'Please login again. Session expired.'
+      'message': 'Unauthorized'
     });
     return;
   } else if (req.originalUrl !== '/login') {
@@ -71,7 +71,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 // Register routes. Loaded main route. Index route loads other routes.
-app.use(require('./controllers/index'));
+app.use(require('./src/index.route'));
 
 //Start listening server
 server.listen(process.env.PORT, () => {

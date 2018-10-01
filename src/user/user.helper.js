@@ -1,4 +1,7 @@
-const user = require('../models/user');
+/**
+ * Created by KD
+ */
+const user = require('./user.model');
 
 /**
  * Check username and password
@@ -6,7 +9,7 @@ const user = require('../models/user');
  * @return {user} - return user
  * @return {err} - return error
  */
-let checkLogin = (username, password) => {
+let getByUsernamePassword = (username, password) => {
   return user
     .findOne({username, password})
     .exec()
@@ -122,5 +125,5 @@ module.exports = {
   addUser,
   updateUser,
   removeUser,
-  checkLogin
+  getByUsernamePassword
 };

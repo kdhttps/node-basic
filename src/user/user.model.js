@@ -1,3 +1,6 @@
+/**
+ * Created by KD
+ */
 const mongoose = require('mongoose');
 
 // define the schema for our user

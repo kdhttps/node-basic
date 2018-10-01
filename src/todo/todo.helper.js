@@ -1,4 +1,4 @@
-const todo = require('../models/todo');
+const todo = require('./todo.model');
 
 /**
  * Get all active todos

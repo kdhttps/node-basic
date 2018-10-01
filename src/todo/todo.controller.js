@@ -1,10 +1,7 @@
-const express = require('express');
 const httpStatus = require('http-status');
-const router = express.Router();
+const todo = require('./todo.helper');
 
-const todo = require('../helpers/todo');
-
-router.post('/todo/search', (req, res) => {
+function search(req, res) {
   todo.getTodoBySearch(req.body)
     .then(todos => {
       return res.send(todos);
@@ -12,9 +9,9 @@ router.post('/todo/search', (req, res) => {
     .catch(error => {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
     });
-});
+};
 
-router.get('/todo', (req, res) => {
+function get(req, res) {
   todo.getAllTodos()
     .then(todos => {
       return res.send(todos);
@@ -22,9 +19,9 @@ router.get('/todo', (req, res) => {
     .catch(error => {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
     });
-});
+};
 
-router.post('/todo', (req, res) => {
+function add(req, res) {
   todo.addTodo(req.body)
     .then(todo => {
       return res.send(todo);
@@ -32,9 +29,9 @@ router.post('/todo', (req, res) => {
     .catch(error => {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
     });
-});
+};
 
-router.put('/todo/:id', (req, res) => {
+function update(req, res) {
   todo.updateTodo(req.body, req.params.id)
     .then(todo => {
       return res.send(todo);
@@ -42,9 +39,9 @@ router.put('/todo/:id', (req, res) => {
     .catch(error => {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
     });
-});
+};
 
-router.delete('/todo/:id', (req, res) => {
+function remove(req, res) {
   todo.removeTodo(req.params.id)
     .then(todo => {
       return res.send(todo);
@@ -52,6 +49,12 @@ router.delete('/todo/:id', (req, res) => {
     .catch(error => {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
     });
-});
+};
 
-module.exports = router;
+module.exports = {
+  search,
+  get,
+  add,
+  update,
+  remove,
+};
