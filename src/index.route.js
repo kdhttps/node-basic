@@ -10,6 +10,6 @@ router.get('/health-check', (req, res) => res.status(200).send({
 }));
 
 router.use('/login', auth);
-router.use('/v1/todo', todo);
+router.use('/todo', todo);
 
 module.exports = router;
