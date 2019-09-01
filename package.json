@@ -22,7 +22,8 @@
     "url": "https://github.com/kdhttps/node-basic/issues"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "./node_modules/.bin/mocha src/**/*.test.js"
   },
   "author": "KD",
   "license": "MIT",
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "request": "^2.88.0"
   }
 }
