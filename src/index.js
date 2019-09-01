@@ -26,7 +26,7 @@ app.set('port', process.env.PORT || 8000);
 app.use(cors());
 
 // Logger
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 
 // Validate each call before route
 app.use('/', function (err, req, res, next) {
