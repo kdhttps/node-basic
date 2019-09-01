@@ -34,12 +34,10 @@ app.use('/', function (err, req, res, next) {
 });
 
 // Set directory for express
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 let filter = function (req) {
   if (['/login'].indexOf(req.path) >= 0) {
-    return true;
-  } else if (req.path.startsWith('/isUserAlreadyExist')) {
     return true;
   }
 };
@@ -66,9 +64,6 @@ app.use('/', function (err, req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
-// For self-signed certificate.
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 // Register routes. Loaded main route. Index route loads other routes.
 app.use(require('./index.route'));
