@@ -9,4 +9,9 @@ describe('Test Common functions', function() {
     expect(true).to.equal(true);
     done();
   });
+
+  it('Test handleCatch2', function(done) {
+    expect(true).to.equal(true);
+    done();
+  });
 });
