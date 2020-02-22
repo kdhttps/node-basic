@@ -5,9 +5,9 @@ Simple node js api project with jwt authentication with mongodb.
 
 This is assumed that npm, node and mongodb are installed on the machine.
 
- * node js >= 8.x
- * npm >= 5.x
- * mongodb >= 3.2.x
+ * node js >= 10.x.x
+ * npm >= 6.x.x
+ * mongodb >= 4.2.x
 
 For installing node and npm please refer [here](https://nodejs.org/en/download/package-manager/).
 For installing mongodb [here](https://docs.mongodb.com/manual/installation/).

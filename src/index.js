@@ -12,7 +12,7 @@ const server = require('http').Server(app);
 
 // MongoDB connection configuration
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL, {useMongoClient: true}, (err, res) => {
+mongoose.connect(process.env.DB_URL, {useUnifiedTopology: true,  useNewUrlParser: true}, (err, res) => {
   if (err)
     console.log(`err connecting to db on ${process.env.DB_URL}, err: ${err}`);
   else
