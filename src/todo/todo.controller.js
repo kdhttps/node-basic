@@ -13,7 +13,7 @@ function search(req, res) {
 function get(req, res) {
   todo.getAllTodos()
     .then(todos => {
-      return res.snd(todos);
+      return res.send(todos);
     })
     .catch(error => handleCatch(error, res));
 }
