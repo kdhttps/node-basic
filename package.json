@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "./node_modules/.bin/mocha src/**/*.test.js"
   },
   "author": "KD",
