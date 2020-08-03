@@ -10,6 +10,9 @@ const expressJwt = require('express-jwt');
 
 const server = require('http').Server(app);
 
+// Logger
+app.use(morgan('combined'));
+
 // MongoDB connection configuration
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, {useUnifiedTopology: true,  useNewUrlParser: true}, (err, res) => {
@@ -24,9 +27,6 @@ app.set('port', process.env.PORT || 8000);
 
 // Allow cross origin
 app.use(cors());
-
-// Logger
-app.use(morgan('combined'));
 
 // Validate each call before route
 app.use('/', function (err, req, res, next) {
